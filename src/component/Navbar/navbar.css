@@ -1,0 +1,41 @@
+.header{
+    height: 15vh;
+    padding: 20px 0px;
+    background-color:#949b9f;
+}
+.header-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-size: 24px;
+    line-height: 24px;
+    display: block;
+}
+.logo a{
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+.user a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: black;
+}
+.userInfo{
+    height: 30px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+
+}
+.login_btn a{
+    color: black;
+    font-size: 1.4rem;
+}
