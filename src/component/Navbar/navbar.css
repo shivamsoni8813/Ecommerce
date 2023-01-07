@@ -1,7 +1,8 @@
+
 .header{
-    height: 15vh;
+    height: 12vh;
     padding: 20px 0px;
-    background-color:#949b9f;
+    background-color:#dfe4e7;
 }
 .header-wrapper{
     display: flex;
@@ -38,4 +39,8 @@ a{
 .login_btn a{
     color: black;
     font-size: 1.4rem;
+}
+.logout-btn{
+    cursor : pointer;
+    font-size: 20px;
 }

@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react"
 import Navbar from "../../component/Navbar/Navbar"
-import { AxiosInstance } from "../../Util/AxiosInstace"
+import { allcatagory } from "../../Api/Auth/idx"
 import "./lp.css"
+import { Link } from "react-router-dom"
 
 function LandingPage() {
 
-    const [catagory, setcatagory] = useState([])
+    const [catagories, setcatagory] = useState([])
+    const [single, setsingle] = useState("")
+    const [singlecate, setsinglecate] = useState([])
+    
+    const fetchcatagory = async () => {
+        try {
+            const res = await allcatagory()
+            setcatagory(res.data)
+            console.log(res.data)
+        } catch (error) {
+            throw new error("Page Not Found")
+        }
+    }
     useEffect(() => {
         fetchcatagory()
     }, [])
 
-    const fetchcatagory = async () => {
-        try {
-            const res = await AxiosInstance.get("/categories")
-            setcatagory(res.data)
-            console.log(res)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const renderComponent = () => {
         return (
             <>
-                <Navbar />
+                <Navbar/>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -33,18 +37,23 @@ function LandingPage() {
                         <div className="col-12">
                             <div className="catagory-List">
                                 <div className="catagory-item">
-                                    All Product
+                                   <Link to="/products">All Products</Link>
                                 </div>
-                                {catagory.map((catagory,i) => {
+                                {catagories.map((catagory,i) => {
                                     return (
                                         <div className="catagory-item" key={i}>
-                                            {catagory}
+                                            <Link to={`/products?categoryId=${i}&name=${catagory}`}  className="text-white" >{catagory}</Link>                                            
                                         </div>
                                     )
                                 })}
                             </div>
                         </div>
-
+                        
+                        <div className="col-12">
+                            <div className="catagory-title">
+                                Select A Catagory To Start Shopping
+                            </div>
+                        </div>
                     </div>
                 </div>
 

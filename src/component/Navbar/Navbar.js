@@ -1,24 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./navbar.css"
+import { Link } from 'react-router-dom'
+import { forsignout } from '../../Api/Auth/idx'
 function Navbar() {
-    const renderComponent = () =>{
+
+    let [user, setuser] = useState("Guest")
+    useEffect(()=>{
+        let localname = localStorage.getItem("name")
+        localname && setuser(localname)
+    },[user])
+
+    let logoutHandler = ()=>{
+        forsignout()
+        setuser("Guest")
+    }
+        const renderComponent = () =>{
         return (
-        <div className="header">
+        <div className="header fixed-top">
             <div className="container">
                 <div className="row">
                     <div className="header-wrapper">
                         <div className="logo">
-                            <a href="/">Ecommerce</a>
+                            <Link to="/">Ecommerce</Link>
                         </div>
                         <div className="user">
-                            <a href="/cart">Cart</a>
+                            <Link to="/cart">Cart</Link>
                         </div>
                         <div className="userInfo">
-                            <a href="/Guest">Guest</a> 
+
+                            <Link to="/Guest">{user}</Link> 
+                        
                         </div>
-                        <div className="login_btn">
-                            <a href="/login">login</a>
+                       
+                       {user !== "Guest" ? <Link to="/login" className="logout-btn" onClick={logoutHandler}>LogOut</Link>:
+                       <div className="login_btn">
+                            <Link to="/login">login</Link>
                         </div>
+                       }
+                    
                     </div>
                 </div>
             </div>
