@@ -74,7 +74,7 @@ function ProductList() {
       minCost : minprice,
       maxCost : maxprice
     }
-    // My Name Is Dhanush Joker
+   
 
     try {
       let result = await searchProducts(input)
