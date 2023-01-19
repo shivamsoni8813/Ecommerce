@@ -18,6 +18,5 @@ export const searchProducts = (sdata)=>{
 
 export const ProductItemCall = (id) =>{
     let url = `products/${id}`
-
     return AxiosInstance.get(url,id)
 }

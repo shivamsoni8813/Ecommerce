@@ -13,9 +13,13 @@ function Auth() {
     const [signupSuccess, setsignupSuccess] = useState(false)
     const [authres , setauthres] = useState("")
 
+    // toggler if user click on signup then it sets true as setsignup
+
     const toggleHandler = () => {
         setsignup(!signup)
     }
+
+    // sign handle for getting user signin
     
     const signInHandler = async () => {
         let userInfo = { username, password }
@@ -35,7 +39,12 @@ function Auth() {
         }
         console.log("clicked")
     }
-    
+
+
+    // signup handle for getting user sign up for signin
+
+
+
     const signUpHandler = async ()=>{
         let userInfo = {username, password, email}
         localStorage.setItem("signupname", username)
@@ -86,7 +95,7 @@ function Auth() {
                               
                                 <div className="input-group">
                                     <input type="submit" className=' form-control btn btn-primary'
-                                        onClick={signup ? signUpHandler : signInHandler} value={signup ? "SignUp" : "SignIn"} />
+                                        onClick={signup ? signUpHandler : signInHandler} value={signup ? "SignUp" : "SignIn"} />  
                                 </div>
                                 <div className="auth-msg text-center" onClick={toggleHandler}>
                                     {signup ? "You Already Havn An Account ? LogIn" : "Don't Have An Acount ? Sign Up"}

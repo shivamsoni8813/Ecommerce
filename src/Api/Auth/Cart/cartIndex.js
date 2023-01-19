@@ -1,5 +1,7 @@
 import { AxiosInstance } from "../../../Util/AxiosInstace";
 
+// These apis are not in working that's why im not getting proper response
+
 export const createCart = async()=>{
 
     let url = '/carts'
@@ -11,7 +13,7 @@ export const createCart = async()=>{
 
 
     try {
-        let res = await AxiosInstance.post(url,{userid},{header})
+        let res = await AxiosInstance.post(url,{userid})
         console.log(res)
         const {id} = res.data;
         localStorage.setItem("cartId", id)
@@ -26,14 +28,14 @@ export const createCart = async()=>{
 export const getCart = async()=>{
     let id = localStorage.getItem('cartId')
 
-    // let token = localStorage.getItem('token')
+    let token = localStorage.getItem('token')
 
-    // let headers = {'Authorization' : `Bearer ${token}`}
+    let headers = {Authorization : `Bearer ${token}`}
 
 
     let url = `carts/${id}`
 
-    let cart =  await AxiosInstance.get(url)
+    let cart =  await AxiosInstance.get(url, {headers})
     console.log(cart)
     return cart;
 }

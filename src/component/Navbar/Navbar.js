@@ -5,15 +5,22 @@ import { forsignout } from '../../Api/Auth/idx'
 function Navbar() {
 
     let [user, setuser] = useState("Guest")
+
+
     useEffect(()=>{
-        let localname = localStorage.getItem("name")
-        localname && setuser(localname)
+        let localname = localStorage.getItem("name") 
+        localname && setuser(localname)    // for guest user functionality
     },[user])
 
+    // for logout button providing a handler function
+    
     let logoutHandler = ()=>{
         forsignout()
         setuser("Guest")
     }
+
+    // navbar rendering
+    
         const renderComponent = () =>{
         return (
         <div className="header fixed-top">
@@ -24,7 +31,7 @@ function Navbar() {
                             <Link to="/">Ecommerce</Link>
                         </div>
                         <div className="user">
-                            <Link to="/cart">Cart</Link>
+                            <Link to="/Carts">Cart</Link>
                         </div>
                         <div className="userInfo">
 

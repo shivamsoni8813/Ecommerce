@@ -10,6 +10,8 @@ function LandingPage() {
     const [single, setsingle] = useState("")
     const [singlecate, setsinglecate] = useState([])
     
+// fatching all  categories
+
     const fetchcatagory = async () => {
         try {
             const res = await allcatagory()
@@ -39,13 +41,15 @@ function LandingPage() {
                                 <div className="catagory-item">
                                    <Link to="/products">All Products</Link>
                                 </div>
+
                                 {catagories.map((catagory,i) => {
                                     return (
-                                        <div className="catagory-item" key={i}>
+                                        <div className="catagory-item" key={i}> 
                                             <Link to={`/products?categoryId=${i}&name=${catagory}`}  className="text-white" >{catagory}</Link>                                            
                                         </div>
                                     )
                                 })}
+                                
                             </div>
                         </div>
                         

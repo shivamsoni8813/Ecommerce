@@ -10,9 +10,9 @@ function ProductItem() {
     const [productDetail, setproductDetail] = useState([])
     const [islogin, setislogin] = useState(false)
 
-    const { id } = useParams()
+    const { id } = useParams() // using this hook im getting particular id of productitem
 
-
+    // api call for products
 
     const productCall = async () => {
         let user = localStorage.getItem("name")
@@ -33,17 +33,22 @@ function ProductItem() {
         productCall()
     }, [])
 
+    // for adding a product to cart but api is not working
 
     const addToCart = async() =>{
        let cart = await getCart()
+       console.log("getcartfired")
        console.log(cart)
     }
+
+    // diffrent cart rendering
+
     const renderToCart = () => {
         if (islogin) {
             return (
-                <div className="product-details-btn btn btn-primary text-decoration-none" onClick={addToCart}>
+                <Link to='/Carts' className="product-details-btn btn btn-primary text-decoration-none" onClick={addToCart}>
                     Add To Cart
-                </div>
+                </Link>
             )
         }
         else{

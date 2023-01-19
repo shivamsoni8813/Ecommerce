@@ -19,13 +19,15 @@ function ProductList() {
 
   const init = async () => {
 
+    // using some js features for getting name and categoryid
+
     const query = new URLSearchParams(window.location.search)
     let id = query.get('categoryId')
     let cateName = query.get('name')
     setCurrCategory(id)
     setCurrCategoryName(cateName)
     try {
-      // let { data } = 
+      // conditional call for products and product category
 
       let { data } = cateName ? await productForCategory(cateName) : await getAllproduct()
       console.log(data)
@@ -40,6 +42,7 @@ function ProductList() {
     init()
   }, [])
 
+  // search functionalty but api is not proper for this implementation.
 
   const searchChangeHandler = async (e) => {
 
@@ -53,6 +56,8 @@ function ProductList() {
       console.log(error)
     }
   }
+
+  // updating min price and max pice in filter
 
   const updateMinPrice = (e)=>{
     console.log(e.target.value);
@@ -87,7 +92,7 @@ function ProductList() {
   }
 
 
-
+ // rendering search 
 
   const renderSearch = () => {
     return (
@@ -134,7 +139,7 @@ function ProductList() {
     )
   }
 
-
+// rendering products and category products
 
   const renderComponent = () => {
     return (
